@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$CURRENT_DIR/helpers.sh"
+
+readonly current_bg=`tmux show-window-option -gv window-status-current-bg`
+readonly border_bg=`tmux show-window-option -gv pane-active-border-bg`
+readonly border_fg=`tmux show-window-option -gv pane-active-border-fg`
+
+readonly concentrate_bg=`get_tmux_option @concentrate-bg $current_bg`
+
+concentrate_enable() {
+    tmux split-window -bh -l 60 bash -c 'tput reset && sleep infinity'
+    tmux select-pane -R
+    tmux split-window -h -l 60 bash -c 'tput reset && sleep infinity'
+    tmux select-pane -L
+    tmux set-window-option pane-active-border-bg $concentrate_bg
+    tmux set-window-option pane-active-border-fg $concentrate_bg
+    tmux set-option -g @concentrate-enabled 1
+}
+
+concentrate_disable() {
+    tmux kill-pane -t -1
+    tmux kill-pane -t +1
+    tmux set-window-option pane-active-border-bg $border_bg
+    tmux set-window-option pane-active-border-fg $border_fg
+    tmux set-option -g @concentrate-enabled 0
+}
+
+concentrate_toggle() {
+    local enabled=`get_tmux_option @concentrate-enabled 0`
+    if [ $enabled -eq 0 ]; then
+        concentrate_enable
+    else
+        concentrate_disable
+    fi
+}
+
+concentrate_toggle
