@@ -16,7 +16,7 @@ concentrate_enable() {
     tmux select-pane -L
     tmux set-window-option pane-active-border-bg $concentrate_bg
     tmux set-window-option pane-active-border-fg $concentrate_bg
-    tmux set-option -g @concentrate-enabled 1
+    tmux set-window-option @concentrate-enabled 1
 }
 
 concentrate_disable() {
@@ -24,12 +24,12 @@ concentrate_disable() {
     tmux kill-pane -t +1
     tmux set-window-option pane-active-border-bg $border_bg
     tmux set-window-option pane-active-border-fg $border_fg
-    tmux set-option -g @concentrate-enabled 0
+    tmux set-window-option @concentrate-enabled 0
 }
 
 concentrate_toggle() {
-    local enabled=`get_tmux_option @concentrate-enabled 0`
-    if [ $enabled -eq 0 ]; then
+    local enabled=`tmux show-window-option -v @concentrate-enabled`
+    if [ -z $enabled ] || [ $enabled -eq 0 ]; then
         concentrate_enable
     else
         concentrate_disable
