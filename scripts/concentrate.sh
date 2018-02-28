@@ -8,12 +8,26 @@ readonly border_bg=`tmux show-window-option -gv pane-active-border-bg`
 readonly border_fg=`tmux show-window-option -gv pane-active-border-fg`
 
 readonly concentrate_bg=`get_tmux_option @concentrate-bg $current_bg`
-readonly concentrate_pad=`get_tmux_option @concentrate-pad 60`
+readonly concentrate_width=`get_tmux_option @concentrate-width 50%`
+
+evaluate_padding() {
+    local window_width=`tmux display -p '#{window_width}'`
+    local pane_width=$concentrate_width
+
+    if [[ $pane_width =~ \d*% ]]; then
+        pane_width=$(( $window_width * ${pane_width%\%} / 100 ))
+    fi
+    if [ $pane_width -lt 0 ] || [ $pane_width -gt $window_width ]; then
+        pane_width=$(( $window_width * 50 / 100 ))
+    fi
+    echo $(( ($window_width - $pane_width) / 2 ))
+}
 
 concentrate_enable() {
-    tmux split-window -bh -l $concentrate_pad bash -c 'tput reset && sleep infinity'
+    local padding=`evaluate_padding`
+    tmux split-window -bh -l $padding bash -c 'tput reset && sleep infinity'
     tmux select-pane -R
-    tmux split-window -h -l $concentrate_pad bash -c 'tput reset && sleep infinity'
+    tmux split-window -h -l $padding bash -c 'tput reset && sleep infinity'
     tmux select-pane -L
     tmux set-window-option pane-active-border-bg $concentrate_bg
     tmux set-window-option pane-active-border-fg $concentrate_bg
