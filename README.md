@@ -34,7 +34,7 @@ Reload TMUX environment:
 
 ### Toggle Key
 
-Concentrate mode is toggled by hitting <kbd>prefix</kbd>-<kbd>C</kbd> by default. You can set `@concentrate-key` to bind it with another key.
+Concentrate mode is toggled by hitting <kbd>prefix</kbd>-<kbd>C</kbd> (Uppercase) by default. You can set `@concentrate-key` to bind it with another key.
 
     set -g @concentrate-key c
 
