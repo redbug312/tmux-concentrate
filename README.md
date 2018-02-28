@@ -46,7 +46,7 @@ The value is same as that of `window-status-current-bg` by default, You can set 
 
     set -g @concentrate-bg black
 
-### How It Works
+## How It Works
 
 This plugin simply create two blank panes on two sides. Noticed that it might fail deabling if you have killed the panes manually before.
 
