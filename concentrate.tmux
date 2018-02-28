@@ -3,6 +3,8 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/scripts/helpers.sh"
 
-readonly key=`get_tmux_option @concentrate-key C`
+readonly concentrate_key_default='C'
 
-tmux bind-key $key run-shell "$CURRENT_DIR/scripts/concentrate.sh"
+readonly concentrate_key=`get_tmux_option @concentrate-key $concentrate_key_default`
+
+tmux bind-key $concentrate_key run-shell "$CURRENT_DIR/scripts/concentrate.sh"
