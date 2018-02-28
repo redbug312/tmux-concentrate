@@ -1,7 +1,7 @@
 # tmux-concentrate
 Get concentrated on readings. 
 
-![screenshots/preview.png](The image shows a preview of the plugin.)
+![The image shows a preview of the plugin.](screenshots/preview.png)
 
 This plugin is inspired by [goyo.vim](https://github.com/junegunn/goyo.vim). It similarly create paddings to the window, to limit the contents to a narrow page.
 
@@ -50,7 +50,7 @@ The value is same as that of `window-status-current-bg` by default, You can set 
 
 This plugin simply create two blank panes on two sides. Noticed that it might fail deabling if you have killed the panes manually before.
 
-![screenshots/panes.png](You can see the paddings are actually blank panes in the image.)
+![You can see the paddings are actually blank panes in the image.](screenshots/panes.png)
 
 When enabled, `@concentrate-enabled` will be set as a tmux-window-option. It might still fail if you set the value manually.
 
