@@ -3,7 +3,7 @@ Get concentrated on readings.
 
 ![The image shows a preview of the plugin.](screenshots/preview.png)
 
-This plugin is inspired by [goyo.vim](https://github.com/junegunn/goyo.vim). It similarly create paddings to the window, to limit the contents to a narrow page.
+This plugin was inspired by [goyo.vim](https://github.com/junegunn/goyo.vim). Similarly, it creates paddings to the window, in order to limit the contents to a narrower page width.
 
 ## Installation
 
@@ -34,13 +34,13 @@ Reload TMUX environment:
 
 ### Toggle Key
 
-Concentrate mode is toggled by <kbd>prefix</kbd>-<kbd>C</kbd> by default. You can set `@concentrate-key` to bind it with another key.
+Concentrate mode is toggled by hitting <kbd>prefix</kbd>-<kbd>C</kbd> by default. You can set `@concentrate-key` to bind it with another key.
 
     set -g @concentrate-key c
 
 ### Background Color
 
-The color will be assigned to the following options when concentrate mode is enabled.
+This color will be assigned to all the following options when concentrate mode is enabled.
 - `pane-active-border-bg`
 - `pane-active-border-fg`
 
@@ -50,11 +50,11 @@ The value is same as that of `window-status-current-bg` by default. You can set 
 
 ### Pane Width
 
-Te width of the concentrated pane is set to be `50%` by default. You can set `@concentrate-width` to override it. You can set the value to either numbers or percentages.
+The width of concentrated pane is set to be `50%` by default. You can set `@concentrate-width` to override it. You can set the value to either numbers or percentages.
 
     set -g @concentrate-width 80
 
-The option will fallbacks to the default value if the specified value exceeds window width.
+The option will fallback to the default value if the specified value exceeds window width.
 
 ## How It Works
 
