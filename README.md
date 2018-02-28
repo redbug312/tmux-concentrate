@@ -41,8 +41,8 @@ Concentrate mode is toggled by <kbd>prefix</kbd>-<kbd>C</kbd> by default. You ca
 ### Background Color
 
 The color will be assigned to the following options when concentrate mode is enabled.
-    - `pane-active-border-bg`
-    - `pane-active-border-fg`
+- `pane-active-border-bg`
+- `pane-active-border-fg`
 
 The value is same as that of `window-status-current-bg` by default, You can set `@concentrate-bg` to override it.
 
