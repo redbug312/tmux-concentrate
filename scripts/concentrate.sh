@@ -7,18 +7,22 @@ readonly current_bg=`tmux show-window-option -gv window-status-current-bg`
 readonly border_bg=`tmux show-window-option -gv pane-active-border-bg`
 readonly border_fg=`tmux show-window-option -gv pane-active-border-fg`
 
-readonly concentrate_bg=`get_tmux_option @concentrate-bg $current_bg`
-readonly concentrate_width=`get_tmux_option @concentrate-width 50%`
+readonly concentrate_bg_default=$current_bg
+readonly concentrate_width_default='50%'
+
+readonly concentrate_bg=`get_tmux_option @concentrate-bg $concentrate_bg_default`
+readonly concentrate_width=`get_tmux_option @concentrate-width $concentrate_width_default`
 
 evaluate_padding() {
     local window_width=`tmux display -p '#{window_width}'`
     local pane_width=$concentrate_width
 
-    if [[ $pane_width =~ \d*% ]]; then
-        pane_width=$(( $window_width * ${pane_width%\%} / 100 ))
+    if [[ $concentrate_width =~ \d*% ]]; then
+        pane_width=$(( $window_width * ${concentrate_width%\%} / 100 ))
     fi
+
     if [ $pane_width -lt 0 ] || [ $pane_width -gt $window_width ]; then
-        pane_width=$(( $window_width * 50 / 100 ))
+        pane_width=$(( $window_width *  ${concentrate_width_default%\%} / 100 ))
     fi
     echo $(( ($window_width - $pane_width) / 2 ))
 }
