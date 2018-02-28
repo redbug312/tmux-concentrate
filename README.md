@@ -1,5 +1,5 @@
 # tmux-concentrate
-Get concentrated on readings. 
+Get concentrated on readings.
 
 ![The image shows a preview of the plugin.](screenshots/preview.png)
 
@@ -48,11 +48,13 @@ The value is same as that of `window-status-current-bg` by default. You can set 
 
     set -g @concentrate-bg black
 
-### Padding Width
+### Pane Width
 
-The width of blank panes is set to be `60` by default. You can set `@concentrate-pad` to override it.
+Te width of the concentrated pane is set to be `50%` by default. You can set `@concentrate-width` to override it. You can set the value to either numbers or percentages.
 
-    set -g @concentrate-pad 45
+    set -g @concentrate-width 80
+
+The option will fallbacks to the default value if the specified value exceeds window width.
 
 ## How It Works
 
