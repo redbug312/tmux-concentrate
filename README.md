@@ -36,23 +36,25 @@ Reload TMUX environment:
 
 Concentrate mode is toggled by <kbd>prefix</kbd>-<kbd>C</kbd> by default. You can set `@concentrate-key` to bind it with another key.
 
-    set -g concentrate-key c
+    set -g @concentrate-key c
 
 ### Background Color
 
-The color will be assigned to `pane-active-border-bg`, `pane-active-border-fg` when concentrate mode is enabled.
+The color will be assigned to the following options when concentrate mode is enabled.
+    - `pane-active-border-bg`
+    - `pane-active-border-fg`
 
-The value is same as that of `window-status-current-bg` by default, You can set `@concentrate-bg` to override.
+The value is same as that of `window-status-current-bg` by default, You can set `@concentrate-bg` to override it.
 
     set -g @concentrate-bg black
 
 ## How It Works
 
-This plugin simply create two blank panes on two sides. Noticed that it might fail deabling if you have killed the panes manually before.
+This plugin simply create two blank panes on the two sides. Noticed that it might fail disabling if you have killed the panes manually before.
 
 ![You can see the paddings are actually blank panes in the image.](screenshots/panes.png)
 
-When enabled, `@concentrate-enabled` will be set as a tmux-window-option. It might still fail if you set the value manually.
+When enabled, `@concentrate-enabled` will be set to record the concentrate mode status of the current window, and might fail if you set the value manually.
 
 ## License
 
