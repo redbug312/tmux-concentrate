@@ -29,9 +29,10 @@ evaluate_padding() {
 
 concentrate_enable() {
     local padding=`evaluate_padding`
-    tmux split-window -bh -l $padding bash -c 'tput reset && sleep infinity'
+    local blank_cmd="bash -c 'tput reset && sleep infinity'"
+    tmux split-window -bh -l $padding "$blank_cmd"
     tmux select-pane -R
-    tmux split-window -h -l $padding bash -c 'tput reset && sleep infinity'
+    tmux split-window -h -l $padding "$blank_cmd"
     tmux select-pane -L
     tmux set-window-option pane-active-border-bg $concentrate_bg
     tmux set-window-option pane-active-border-fg $concentrate_bg

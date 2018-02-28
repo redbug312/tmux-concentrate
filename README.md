@@ -1,5 +1,5 @@
 # tmux-concentrate
-Get concentrated on readings. 
+Get concentrated on readings.
 
 ![The image shows a preview of the plugin.](screenshots/preview.png)
 
