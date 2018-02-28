@@ -8,11 +8,12 @@ readonly border_bg=`tmux show-window-option -gv pane-active-border-bg`
 readonly border_fg=`tmux show-window-option -gv pane-active-border-fg`
 
 readonly concentrate_bg=`get_tmux_option @concentrate-bg $current_bg`
+readonly concentrate_pad=`get_tmux_option @concentrate-pad 60`
 
 concentrate_enable() {
-    tmux split-window -bh -l 60 bash -c 'tput reset && sleep infinity'
+    tmux split-window -bh -l $concentrate_pad bash -c 'tput reset && sleep infinity'
     tmux select-pane -R
-    tmux split-window -h -l 60 bash -c 'tput reset && sleep infinity'
+    tmux split-window -h -l $concentrate_pad bash -c 'tput reset && sleep infinity'
     tmux select-pane -L
     tmux set-window-option pane-active-border-bg $concentrate_bg
     tmux set-window-option pane-active-border-fg $concentrate_bg

@@ -44,9 +44,15 @@ The color will be assigned to the following options when concentrate mode is ena
 - `pane-active-border-bg`
 - `pane-active-border-fg`
 
-The value is same as that of `window-status-current-bg` by default, You can set `@concentrate-bg` to override it.
+The value is same as that of `window-status-current-bg` by default. You can set `@concentrate-bg` to override it.
 
     set -g @concentrate-bg black
+
+### Padding Width
+
+The width of blank panes is set to be `60` by default. You can set `@concentrate-pad` to override it.
+
+    set -g @concentrate-pad 45
 
 ## How It Works
 
