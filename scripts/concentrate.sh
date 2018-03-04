@@ -23,7 +23,7 @@ evaluate_padding() {
     fi
 
     if [ $pane_width -lt 0 ] || [ $pane_width -gt $window_width ]; then
-        pane_width=$(( $window_width *  ${concentrate_width_default%\%} / 100 ))
+        pane_width=$(( $window_width * ${concentrate_width_default%\%} / 100 ))
     fi
     echo $(( ($window_width - $pane_width) / 2 ))
 }
